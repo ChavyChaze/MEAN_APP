@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>Employers List App</title>
+  </head>
+  <body>
+    <div class="container" ng-controller="AppCtrl">
+      <h1>Employers List App</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>empId</th>
+            <th>empName</th>
+            <th>empActive</th>
+            <th>empDepartment</th>
+            <th>Action</th>
+            <th>&nbsp;</th>
+            <tr>
+              <th>
+                <input
+                  class="form-control"
+                  type="text"
+                  ng-model="employer.empName"
+                  value="empName"
+                  required
+                />
+              </th>
+              <th>
+                <input
+                  class="checkbox"
+                  type="checkbox"
+                  ng-model="employer.empActive"
+                />
+              </th>
+              <th>
+                <input
+                  class="form-control"
+                  type="text"
+                  ng-model="employer.empDepartment"
+                  value="empDepartment"
+                  required
+                />
+              </th>
+              <th>
+                <button class="btn btn-primary" ng-click="addEmployer()">
+                  Add Employer
+                </button>
+              </th>
+              <th>
+                  <button class="btn btn-info" ng-click="update()">
+                    Update
+                  </button>
+                  &nbsp;&nbsp;
+                  <button class="btn btn-info" ng-click="deselect()">Clear</button>
+                </th>
+            </tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="employer in employers">
+            <td>{{ employer.empId }}</td>
+            <td>{{ employer.empName }}</td>
+            <td>{{ employer.empActive }}</td>
+            <td>{{ employer.empDepartment }}</td>
+            <td>
+              <button class="btn btn-danger" ng-click="remove(employer.empId)">
+                Remove
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-warning" ng-click="edit(employer.empId)">
+                Edit
+              </button>
+            </td>
+          </tr>
+          <pagination 
+            ng-model="currentPage"
+            total-items="employers.length"
+            max-size="maxSize"  
+            boundary-links="true">
+          </pagination>
+        </tbody>
+      </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="./controllers/controller.js"></script>
+  </body>
+</html>

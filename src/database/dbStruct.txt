@@ -1,0 +1,2 @@
+CREATE DATABASE employers;
+CREATE TABLE `employers`.`employers` ( `empId` INT NOT NULL AUTO_INCREMENT , `empName` TEXT NULL , `empActive` BOOLEAN NULL , `empDepartment` TEXT NULL , `createdAt` DATE NULL , `updatedAt` DATE NULL , PRIMARY KEY (`empId`)) ENGINE = InnoDB;
